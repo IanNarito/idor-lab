@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-5">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header bg-dark text-white">Create Private Document</div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="mb-2">
+            <label class="form-label">Document Title</label>
+            <input type="text" name="title" class="form-control" required placeholder="e.g., Q3 Strategy">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Confidential Content</label>
+            <textarea name="payload" class="form-control" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-dark w-100">Save Document</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-header bg-secondary text-white">Your Documents</div>
+      <ul class="list-group list-group-flush">
+        {% for doc in my_docs %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{ doc.title }}</span>
+            <a href="/lab4?doc_id={{ doc.doc_uuid }}" class="btn btn-sm btn-outline-primary">View</a>
+          </li>
+        {% else %}
+          <li class="list-group-item text-muted">No documents created yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-7">
+    <div class="card shadow-sm border-info">
+      <div class="card-header bg-info text-white">Document Viewer</div>
+      <div class="card-body">
+        {% if selected_doc %}
+          <h5>{{ selected_doc.title }}</h5>
+          <p class="text-muted small">Owner: <code>{{ selected_doc.owner_username }}</code> | UUID: <code>{{ selected_doc.doc_uuid }}</code></p>
+          <div class="p-3 bg-light border rounded font-monospace">{{ selected_doc.payload }}</div>
+        {% elif requested_uuid %}
+          <div class="alert alert-warning">Document not found for UUID: {{ requested_uuid }}</div>
+        {% else %}
+          <p class="text-muted">Select a document from the left, or query a direct <code>?doc_id=&lt;UUID&gt;</code> parameter.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

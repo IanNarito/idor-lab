@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDOR Security Academy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="/">IDOR Lab</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="/lab1?id=102">Lab 1: Sequential ID</a></li>
+        <li class="nav-item"><a class="nav-link" href="/lab2?ref=NTAy">Lab 2: Encoded ID</a></li>
+        <li class="nav-item"><a class="nav-link" href="/lab3?token=c81e728d9d4c2f636f067f89cc14862c">Lab 3: Hashed ID</a></li>
+        <li class="nav-item"><a class="nav-link" href="/lab4">Lab 4: Unpredictable UUID</a></li>
+      </ul>
+      <div class="d-flex text-white align-items-center">
+        {% if session.username %}
+          <span class="me-3">User: <strong>{{ session.username }}</strong></span>
+          <a href="/logout" class="btn btn-outline-danger btn-sm">Logout</a>
+        {% else %}
+          <a href="/login" class="btn btn-outline-primary btn-sm me-2">Login</a>
+          <a href="/register" class="btn btn-primary btn-sm">Register</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card border-warning">
+  <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+    <span>Lab 2: Order Receipts (Encoded Parameter)</span>
+    <span class="badge bg-dark">URL Param: ?ref={{ current_ref }}</span>
+  </div>
+  <div class="card-body">
+    {% if receipt %}
+      <h4>Receipt: {{ receipt.item }}</h4>
+      <div class="p-3 bg-light rounded border mt-3">
+        <strong>Billing Account:</strong>
+        <p class="mb-0 text-danger font-monospace">{{ receipt.billing_info }}</p>
+      </div>
+    {% else %}
+      <div class="alert alert-warning">Invalid receipt reference code.</div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

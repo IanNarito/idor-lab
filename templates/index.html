@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm border">
+  <h1 class="display-6 fw-bold">Insecure Direct Object Reference (IDOR) Practice Range</h1>
+  <p class="lead">Hands-on laboratory designed to walk through the 4 progressive IDOR patterns observed in modern penetration testing.</p>
+  <hr>
+  <div class="row g-4 mt-2">
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Lab 1: Basic Sequential ID</h5>
+          <p class="card-text text-muted">Direct database keys exposed in URL parameters.</p>
+          <a href="/lab1" class="btn btn-primary">Start Lab 1</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Lab 2: Obfuscated / Encoded ID</h5>
+          <p class="card-text text-muted">Identifiers obfuscated using simple encoding schemes (Base64).</p>
+          <a href="/lab2" class="btn btn-primary">Start Lab 2</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Lab 3: Hashed ID</h5>
+          <p class="card-text text-muted">Object references generated via deterministic cryptographic hashes (MD5).</p>
+          <a href="/lab3" class="btn btn-primary">Start Lab 3</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Lab 4: Unpredictable UUID (2-Account Method)</h5>
+          <p class="card-text text-muted">GUIDs with zero backend authorization checks. Tested using attacker vs. victim roles.</p>
+          <a href="/lab4" class="btn btn-primary">Start Lab 4</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
